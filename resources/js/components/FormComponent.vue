@@ -214,7 +214,7 @@ export default {
       editModalOpen: false,
       deleteModalOpen: false,
       currentPage: 1,
-      contactsPerPage: 10,
+      contactsPerPage: 20,
     };
   },
   computed: {
