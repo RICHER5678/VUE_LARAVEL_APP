@@ -7,7 +7,7 @@
         <title>Laravel Vue App</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="antialiased">
+    <body class="antialiased" data-bs-theme="dark">
         <div id="app"></div>
     </body>
 </html>

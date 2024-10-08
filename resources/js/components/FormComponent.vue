@@ -1,7 +1,7 @@
-<template>
+<template  >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <div class="container mt-4">
-    <h2 class="text-center">Contact Form</h2>
+  <div   class="container mt-4">
+    <h2 class="text-center">Please add Contacts</h2>
     <form @submit.prevent="submitForm">
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
@@ -12,14 +12,14 @@
         <input type="email" class="form-control" id="email" v-model="form.email" required />
       </div>
       <div class="mb-3">
-        <label for="message" class="form-label">Message</label>
-        <textarea class="form-control" id="message" v-model="form.message" required></textarea>
+        <label for="phone" class="form-label">Phone Number</label>
+        <input type="number" class="form-control" id="phone" v-model="form.phone" required />
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success">Add Contact</button>
     </form>
 
     <!-- Success Modal for Form Submission -->
-    <div class="modal" tabindex="-1" v-if="showSuccessModal">
+    <div  data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="showSuccessModal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -36,8 +36,26 @@
       </div>
     </div>
 
+      <!-- Success Modal for Form Submission -->
+      <div  data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="showFailModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Success</h5>
+            <button type="button" class="btn-close" @click="showFailModal = false"></button>
+          </div>
+          <div class="modal-body">
+            <p>Error adding contact!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click="showFailModal = false">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Success Modal for Contact Update -->
-    <div class="modal" tabindex="-1" v-if="showUpdateSuccessModal">
+    <div  data-bs-theme="dark" class="modal text-light"  tabindex="-1" v-if="showUpdateSuccessModal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -54,8 +72,9 @@
       </div>
     </div>
 
+
     <!-- Success Modal for Contact Delete -->
-    <div class="modal" tabindex="-1" v-if="showDeleteSuccessModal">
+    <div  data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="showDeleteSuccessModal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -75,13 +94,13 @@
     <!-- Contact List -->
     <div class="container mb-4">
       <h3 class="mt-4">Contact List</h3>
-      <table class="table table-bordered mt-3 ">
+      <table data-bs-theme="" class="table table-bordered mt-3  ">
         <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Message</th>
+            <th>Phone Number</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -90,13 +109,13 @@
             <td>{{ contact.id }}</td>
             <td>{{ contact.name }}</td>
             <td>{{ contact.email }}</td>
-            <td>{{ contact.message }}</td>
+            <td>{{ contact.phone }}</td>
             <td>
               <!-- Action buttons -->
-              <button class="btn btn-info btn-sm me-2" @click="openViewModal(contact)">
+              <button class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
                 <i class="fas fa-eye"></i> View
               </button>
-              <button class="btn btn-warning btn-sm me-2" @click="openEditModal(contact)">
+              <button class="btn btn-primary btn-sm me-2" @click="openEditModal(contact)">
                 <i class="fas fa-edit"></i> Edit
               </button>
               <button class="btn btn-danger btn-sm" @click="openDeleteModal(contact)">
@@ -124,7 +143,7 @@
     </div>
 
     <!-- View Modal -->
-    <div class="modal" tabindex="-1" v-if="viewModalOpen">
+    <div  data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="viewModalOpen">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -134,7 +153,7 @@
           <div class="modal-body">
             <p><strong>Name:</strong> {{ selectedContact.name }}</p>
             <p><strong>Email:</strong> {{ selectedContact.email }}</p>
-            <p><strong>Message:</strong> {{ selectedContact.message }}</p>
+            <p><strong>Phone Number:</strong> {{ selectedContact.phone }}</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" @click="viewModalOpen = false">Close</button>
@@ -144,7 +163,7 @@
     </div>
 
     <!-- Edit Modal -->
-    <div class="modal" tabindex="-1" v-if="editModalOpen">
+    <div  data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="editModalOpen">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -161,8 +180,8 @@
               <input type="email" class="form-control" v-model="selectedContact.email" />
             </div>
             <div class="mb-3">
-              <label for="message" class="form-label">Message</label>
-              <textarea class="form-control" v-model="selectedContact.message"></textarea>
+              <label for="phone" class="form-label">Phone Number</label>
+              <input type="number" class="form-control" v-model="selectedContact.phone" />
             </div>
           </div>
           <div class="modal-footer">
@@ -174,7 +193,7 @@
     </div>
 
     <!-- Delete Modal -->
-    <div class="modal" tabindex="-1" v-if="deleteModalOpen">
+    <div  data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="deleteModalOpen">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -203,11 +222,12 @@ export default {
       form: {
         name: "",
         email: "",
-        message: "",
+        phone: "",
       },
       contacts: [],
       selectedContact: {},
       showSuccessModal: false,
+      showFailModal:false,
       showUpdateSuccessModal: false,
       showDeleteSuccessModal: false,
       viewModalOpen: false,
@@ -231,9 +251,11 @@ export default {
       try {
         await axios.post("/api/contact", this.form);
         this.showSuccessModal = true;
-        this.form = { name: "", email: "", message: "" };
+        this.form = { name: "", email: "", phone: "" };
         this.fetchContacts();
       } catch (error) {
+        this.showFailModal = true;
+        this.form = { name: "", email: "", phone: "" };
         console.error("Error submitting form:", error);
       }
     },
@@ -241,6 +263,7 @@ export default {
       try {
         const response = await axios.get("/api/contacts");
         this.contacts = response.data;
+       
       } catch (error) {
         console.error("Error fetching contacts:", error);
       }
