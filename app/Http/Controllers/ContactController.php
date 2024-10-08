@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ContactsImport;
 
 class ContactController extends Controller
 {
@@ -20,7 +22,7 @@ class ContactController extends Controller
         Contact::create($validatedData);
 
         // Return a response
-        return response()->json(['message' => 'Form submitted successfully!'], 201);
+        return response()->json(['message' => 'Contact Created Successfully!'], 201);
     }
 
 
@@ -39,7 +41,7 @@ class ContactController extends Controller
         $contact = Contact::findOrFail($id);
         $contact->name = $request->name;
         $contact->email = $request->email;
-        $contact->message = $request->message;
+        $contact->phone = $request->phone;
         $contact->save();
 
         return response()->json(['message' => 'Contact updated successfully!']);
@@ -52,6 +54,20 @@ class ContactController extends Controller
           $contact->delete();
   
           return response()->json(['message' => 'Contact deleted successfully!']);
+      }
+
+      //for handling the imports
+      public function import(Request $request)
+      {
+          // Validate that a file is present and is a valid type
+          $request->validate([
+              'file' => 'required|mimes:xlsx,csv',
+          ]);
+  
+          // Use Laravel Excel to import the file
+          Excel::import(new ContactsImport, $request->file('file'));
+  
+          return response()->json(['message' => 'Contacts imported successfully'], 200);
       }
 
 }

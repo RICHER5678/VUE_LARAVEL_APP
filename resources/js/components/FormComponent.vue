@@ -1,7 +1,7 @@
 <template  >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <div   class="container mt-4">
-    <h2 class="text-center">Please add Contacts</h2>
+    <h2 class="text-center">Add Contact</h2>
     <form @submit.prevent="submitForm">
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
@@ -27,7 +27,7 @@
             <button type="button" class="btn-close" @click="showSuccessModal = false"></button>
           </div>
           <div class="modal-body">
-            <p>Form submitted successfully!</p>
+            <p>Contact Created successfully!</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" @click="showSuccessModal = false">Close</button>
@@ -36,16 +36,16 @@
       </div>
     </div>
 
-      <!-- Success Modal for Form Submission -->
-      <div  data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="showFailModal">
+      <!-- Fail Modal for Form Submission -->
+      <div  data-bs-theme="dark" class="modal text-light " tabindex="-1" v-if="showFailModal">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Success</h5>
+          <div class="modal-header ">
+            <h5 class="modal-title text-danger ">Failure!</h5>
             <button type="button" class="btn-close" @click="showFailModal = false"></button>
           </div>
-          <div class="modal-body">
-            <p>Error adding contact!</p>
+          <div class="modal-body " >
+            <p >Error Creating Contact!</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" @click="showFailModal = false">Close</button>
@@ -91,6 +91,39 @@
       </div>
     </div>
 
+
+
+    <!-- for importing contacts -->
+      <!-- Import Button with File Input -->
+      <div class="float-end">
+        <button class="btn btn-success " @click="importFile = null; showImportModal = true">
+          <i class="fas fa-file-import"></i> Import Contacts
+        </button>
+      </div>
+    
+    
+    <!-- Import Modal -->
+    <div class="modal" v-if="showImportModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Import Contacts</h5>
+            <button type="button" class="btn-close" @click="showImportModal = false"></button>
+          </div>
+          <div class="modal-body">
+            <form @submit.prevent="submitImport">
+              <div class="mb-3">
+                <label for="file" class="form-label">Select Excel or CSV File</label>
+                <input type="file" class="form-control" id="file" @change="handleFileUpload" accept=".xlsx,.csv" required />
+              </div>
+              <button type="submit" class="btn btn-success">Import</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- for importing contacts -->
+
     <!-- Contact List -->
     <div class="container mb-4">
       <h3 class="mt-4">Contact List</h3>
@@ -113,13 +146,13 @@
             <td>
               <!-- Action buttons -->
               <button class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
-                <i class="fas fa-eye"></i> View
+                <i class="fa fa-eye"></i> View
               </button>
               <button class="btn btn-primary btn-sm me-2" @click="openEditModal(contact)">
-                <i class="fas fa-edit"></i> Edit
+                <i class="fa fa-edit"></i> Edit
               </button>
               <button class="btn btn-danger btn-sm" @click="openDeleteModal(contact)">
-                <i class="fas fa-trash"></i> Delete
+                <i class="fa fa-trash"></i> Delete
               </button>
             </td>
           </tr>
@@ -143,7 +176,7 @@
     </div>
 
     <!-- View Modal -->
-    <div  data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="viewModalOpen">
+    <div  data-bs-theme="dark" class="modal" tabindex="-1" v-if="viewModalOpen">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -176,8 +209,8 @@
               <input type="text" class="form-control" v-model="selectedContact.name" />
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" v-model="selectedContact.email" />
+              <label for="email" class="form-label" >Email</label>
+              <input  type="email" class="form-control" v-model="selectedContact.email" />
             </div>
             <div class="mb-3">
               <label for="phone" class="form-label">Phone Number</label>
@@ -226,6 +259,7 @@ export default {
       },
       contacts: [],
       selectedContact: {},
+      showImportModal:false,
       showSuccessModal: false,
       showFailModal:false,
       showUpdateSuccessModal: false,
@@ -253,12 +287,58 @@ export default {
         this.showSuccessModal = true;
         this.form = { name: "", email: "", phone: "" };
         this.fetchContacts();
+
+        //automatically hide the success modal after submittig the form
+        setTimeout(() => {
+      this.showSuccessModal = false;
+    }, 10000); // 10 seconds
+
       } catch (error) {
         this.showFailModal = true;
         this.form = { name: "", email: "", phone: "" };
         console.error("Error submitting form:", error);
+
+        //automatically hide the fail modal after submiting a form
+        setTimeout(() => {
+      this.showFailModal = false;
+    }, 10000); // 10 seconds
+
       }
     },
+    //for handling the imports  
+    handleFileUpload(event) {
+      this.importFile = event.target.files[0];  // Store the uploaded file
+    },
+    async submitImport() {
+      const formData = new FormData();
+      formData.append('file', this.importFile);
+
+      try {
+        await axios.post("/api/import-contacts", formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+        this.showSuccessModal = true;
+        this.showImportModal = false;
+        this.fetchContacts();  // Reload contacts after import
+//automatically hide the success modal after importing(10secs)
+setTimeout(() => {
+      this.showSuccessModal = false;
+    }, 10000); // 10 seconds
+
+      } catch (error) {
+        console.error("Error importing contacts:", error);
+        this.showImportModal = false;
+        this.showFailModal = true;
+        
+        //automatically hide the fail modal after importing
+        setTimeout(() => {
+      this.showFailModal = false;
+    }, 10000); // 10 seconds
+      }
+    },
+    //for fetching the data fron the database
     async fetchContacts() {
       try {
         const response = await axios.get("/api/contacts");
@@ -286,6 +366,12 @@ export default {
         this.showUpdateSuccessModal = true;
         this.editModalOpen = false;
         this.fetchContacts();
+
+        //automatically make the update modal disapper after updating
+        setTimeout(() => {
+      this.showUpdateSuccessModal = false;
+    }, 10000); // 10 seconds
+
       } catch (error) {
         console.error("Error updating contact:", error);
       }
@@ -300,6 +386,11 @@ export default {
         this.showDeleteSuccessModal = true;
         this.deleteModalOpen = false;
         this.fetchContacts();
+        //automatically make the delete success modal disapper
+        setTimeout(() => {
+      this.showDeleteSuccessModal = false;
+    }, 10000); // 10 seconds
+
       } catch (error) {
         console.error("Error deleting contact:", error);
       }

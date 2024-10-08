@@ -17,3 +17,5 @@ Route::get('/contacts', [ContactController::class, 'index']);
 Route::put('/contact/{id}', [ContactController::class, 'update']);
 //for deleting the data in the contacts table
 Route::delete('/contact/{id}', [ContactController::class, 'destroy']);
+//for handling the imports
+Route::post('/import-contacts', [ContactController::class, 'import']);
