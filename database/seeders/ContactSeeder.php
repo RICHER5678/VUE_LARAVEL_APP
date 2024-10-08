@@ -16,7 +16,7 @@ class ContactSeeder extends Seeder
             Contact::create([
                 'name' => $faker->name,
                 'email' => $faker->unique()->safeEmail,
-                'message' => $faker->text(5), // Adjust the length as needed
+                'phone' => $faker->numberBetween(750000003,771100781 ), // Adjust the length as needed
             ]);
         }
     }
