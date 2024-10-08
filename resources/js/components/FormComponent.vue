@@ -15,7 +15,7 @@
         <label for="phone" class="form-label">Phone Number</label>
         <input type="number" class="form-control" id="phone" v-model="form.phone" required />
       </div>
-      <button type="submit" class="btn btn-success">Add Contact</button>
+      <button type="submit" class="btn btn-success"> Add Contact&nbsp;<i class="fa fa-plus-circle"></i></button>
     </form>
 
     <!-- Success Modal for Form Submission -->
@@ -113,10 +113,11 @@
           <div class="modal-body">
             <form @submit.prevent="submitImport">
               <div class="mb-3">
+                <i class="fa fa-file-excel p-2" aria-hidden="true"></i>
                 <label for="file" class="form-label">Select Excel or CSV File</label>
                 <input type="file" class="form-control" id="file" @change="handleFileUpload" accept=".xlsx,.csv" required />
               </div>
-              <button type="submit" class="btn btn-success">Import</button>
+              <button type="submit" class="btn btn-success">Import<i class="fa fa-arrow-circle-right p-2" aria-hidden="true"></i></button>
             </form>
           </div>
         </div>
