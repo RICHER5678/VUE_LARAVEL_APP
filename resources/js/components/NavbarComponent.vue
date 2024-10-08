@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg p-4 bg-body-tertiary">
+    <nav  data-bs-theme="dark" class="navbar navbar-expand-lg p-4 bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">VUEAPP</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
