@@ -66,7 +66,8 @@ class ContactController extends Controller
   
           // Use Laravel Excel to import the file
           Excel::import(new ContactsImport, $request->file('file'));
-  
+
+        //for the API
           return response()->json(['message' => 'Contacts imported successfully'], 200);
       }
 
