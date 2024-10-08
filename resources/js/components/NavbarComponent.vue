@@ -1,50 +1,90 @@
 <template>
-    <nav  data-bs-theme="dark" class="navbar navbar-expand-lg p-4 bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">VUEAPP</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Services
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+  <nav data-bs-theme="dark" class="navbar navbar-expand-lg p-4 bg-body-tertiary">
+    <div class="container-fluid">
+      <b><a class="navbar-brand" href="#"> SMS</a></b>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li><a class="nav-link d-flex align-items-center"   href="#"><i class="fa fa-home p-1"></i> Dashboard</a></li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Message Management
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-sms"></i> Quick SMS</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-file-alt"></i> Templates</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"> Contacts</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Company Management
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-sitemap"></i> Organisations</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-layer-group"></i> Departments</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-user-tag"></i> Roles</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              User Management
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-users-cog"></i> Groups</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Users</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Jobs
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-briefcase"></i> Contact Jobs</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Message Jobs</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Reports
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-briefcase"></i> Contact Reports</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Message Reports</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             Settings
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#"><i class="fas fa-id-badge"></i> Sender ID</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> My Profile</a></li>
+            </ul>
+          </li>
+        </ul>
+       
+        <!-- account button -->
+<div style="margin-right: auto;" class="btn-group ">
+  <button type="button" class="btn btn-success"><i class="fa fa-user p-2"></i>Account</button>
+  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">My Profile</a></li>
+    <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+    <li><hr class="dropdown-divider"></li>
+    <li> <a class="dropdown-item" href="#"> Logout<i class="fa fa-power-off p-2" aria-hidden="true"></i></a></li>
+  </ul>
+</div>
+     
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </template>
-
-<script>
-export default {
-  name: 'NavbarComponent',
-};
-</script>
-
-<style scoped>
-.navbar {
-  margin-bottom: 20px;
-}
-</style>

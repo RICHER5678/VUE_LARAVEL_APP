@@ -95,12 +95,20 @@
 
     <!-- for importing contacts -->
       <!-- Import Button with File Input -->
-      <div class="float-end">
+      <div class="d-flex float-end">
+      <div class="float-end ">
         <button class="btn btn-success " @click="importFile = null; showImportModal = true">
           <i class="fas fa-file-import"></i> Import Contacts
         </button>
       </div>
-    
+    &nbsp;
+    <!-- export button -->
+      <div class="float-end">
+        <button class="btn btn-success " @click="importFile = null; showImportModal = true">
+          <i class="fas fa-file-excel"></i> Export Contacts
+        </button>
+      </div>
+     </div>
     
     <!-- Import Modal -->
     <div class="modal" v-if="showImportModal">
@@ -146,13 +154,13 @@
             <td>{{ contact.phone }}</td>
             <td>
               <!-- Action buttons -->
-              <button class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
+              <button style="width:100px; margin-left:10px; margin-right: 0;" class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
                 <i class="fa fa-eye"></i> View
               </button>
-              <button class="btn btn-primary btn-sm me-2" @click="openEditModal(contact)">
+              <button style="width:100px" class="btn btn-secondary btn-sm me-2" @click="openEditModal(contact)">
                 <i class="fa fa-edit"></i> Edit
               </button>
-              <button class="btn btn-danger btn-sm" @click="openDeleteModal(contact)">
+              <button style="width:100px" class="btn btn-danger btn-sm" @click="openDeleteModal(contact)">
                 <i class="fa fa-trash"></i> Delete
               </button>
             </td>
