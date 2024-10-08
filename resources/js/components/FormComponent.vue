@@ -15,7 +15,7 @@
         <label for="phone" class="form-label">Phone Number</label>
         <input type="number" class="form-control" id="phone" v-model="form.phone" required />
       </div>
-      <button type="submit" class="btn btn-success">Add Contact</button>
+      <button type="submit" class="btn btn-success"> Add Contact&nbsp;<i class="fa fa-plus-circle"></i></button>
     </form>
 
     <!-- Success Modal for Form Submission -->
@@ -95,12 +95,20 @@
 
     <!-- for importing contacts -->
       <!-- Import Button with File Input -->
-      <div class="float-end">
+      <div class="d-flex float-end">
+      <div class="float-end ">
         <button class="btn btn-success " @click="importFile = null; showImportModal = true">
           <i class="fas fa-file-import"></i> Import Contacts
         </button>
       </div>
-    
+    &nbsp;
+    <!-- export button -->
+      <div class="float-end">
+        <button class="btn btn-success " @click="importFile = null; showImportModal = true">
+          <i class="fas fa-file-excel"></i> Export Contacts
+        </button>
+      </div>
+     </div>
     
     <!-- Import Modal -->
     <div class="modal" v-if="showImportModal">
@@ -113,10 +121,11 @@
           <div class="modal-body">
             <form @submit.prevent="submitImport">
               <div class="mb-3">
+                <i class="fa fa-file-excel p-2" aria-hidden="true"></i>
                 <label for="file" class="form-label">Select Excel or CSV File</label>
                 <input type="file" class="form-control" id="file" @change="handleFileUpload" accept=".xlsx,.csv" required />
               </div>
-              <button type="submit" class="btn btn-success">Import</button>
+              <button type="submit" class="btn btn-success">Import<i class="fa fa-arrow-circle-right p-2" aria-hidden="true"></i></button>
             </form>
           </div>
         </div>
@@ -145,13 +154,13 @@
             <td>{{ contact.phone }}</td>
             <td>
               <!-- Action buttons -->
-              <button class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
+              <button style="width:100px; margin-left:10px; margin-right: 0;" class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
                 <i class="fa fa-eye"></i> View
               </button>
-              <button class="btn btn-primary btn-sm me-2" @click="openEditModal(contact)">
+              <button style="width:100px" class="btn btn-secondary btn-sm me-2" @click="openEditModal(contact)">
                 <i class="fa fa-edit"></i> Edit
               </button>
-              <button class="btn btn-danger btn-sm" @click="openDeleteModal(contact)">
+              <button style="width:100px" class="btn btn-danger btn-sm" @click="openDeleteModal(contact)">
                 <i class="fa fa-trash"></i> Delete
               </button>
             </td>
