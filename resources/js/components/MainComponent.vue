@@ -1,24 +1,22 @@
 <template>
-    <div>
-      <NavbarComponent />
-      <FormComponent />
-      <!-- <columns/> -->
-    </div>
-  </template>
-  
-  <script scoped>
-  import columns from './columns.vue';
-  import NavbarComponent from './NavbarComponent.vue';
-  import FormComponent from './FormComponent.vue';
+  <div>
+    <navbar-component /> <!-- Render navbar here -->
+    <router-view /> <!-- Render routed components here -->
+  </div>
+</template>
 
-  
-  export default {
-    name: 'MainComponent',
-    components: {
-      columns,
-      NavbarComponent,
-      FormComponent,
-     
-    },
-  };
-  </script>
+<script>
+// Import the NavbarComponent here
+import NavbarComponent from './NavbarComponent.vue'; 
+
+export default {
+  name: "MainComponent",
+  components: {
+    NavbarComponent // Register the navbar component locally
+  },
+};
+</script>
+
+<style>
+/* Add any global styles you may need */
+</style>

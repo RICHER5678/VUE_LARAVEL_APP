@@ -1,32 +1,20 @@
 // Import the Vue.js library
 import { createApp } from 'vue';
-
-
-//axios for inserting into the database
 import axios from 'axios';
 
-// Import Bootstrap's CSS
+// Import Bootstrap's CSS and JavaScript
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-// Import Bootstrap's JavaScript
 import 'bootstrap';
 
-// Import your main application component
-import App from './components/MainComponent.vue';
-
-// Import the other components
-import columns from './components/columns.vue';
-import NavbarComponent from './components/NavbarComponent.vue';
-import FormComponent from './components/FormComponent.vue';
-
+// Import your main application component and router
+import App from './components/MainComponent.vue'; // Your main component that includes the navbar
+import router from './router'; // Import the router configuration
 
 // Create a new Vue application instance
 const app = createApp(App);
 
-// Register the components globally
-app.component('navbar-component', NavbarComponent);
-app.component('form-component', FormComponent);
-app.component('columns',columns)
+// Register the router
+app.use(router);
 
 // Mount the application to the HTML element with id 'app'
 app.mount('#app');
