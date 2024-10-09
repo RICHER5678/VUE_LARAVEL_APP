@@ -1,7 +1,7 @@
 <template  >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <div   class="container mt-4">
-    <h2 class="text-center">Add Contact</h2>
+    <h2 class="text-left">Create Contact</h2>
     <form @submit.prevent="submitForm">
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
@@ -15,7 +15,7 @@
         <label for="phone" class="form-label">Phone Number</label>
         <input type="number" class="form-control" id="phone" v-model="form.phone" required />
       </div>
-      <button type="submit" class="btn btn-success"> Add Contact&nbsp;<i class="fa fa-plus-circle"></i></button>
+      <button type="submit" class="btn btn-success">Create&nbsp;<i class="fa fa-plus-circle"></i></button>
     </form>
 
     <!-- Success Modal for Form Submission -->
@@ -157,10 +157,10 @@
               <button style="width:100px; margin-left:10px; margin-right: 0;" class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
                 <i class="fa fa-eye"></i> View
               </button>
-              <button style="width:100px" class="btn btn-secondary btn-sm me-2" @click="openEditModal(contact)">
+              <button style="width:100px" class="btn btn-secondary btn-sm me-2 " @click="openEditModal(contact)">
                 <i class="fa fa-edit"></i> Edit
               </button>
-              <button style="width:100px" class="btn btn-danger btn-sm" @click="openDeleteModal(contact)">
+              <button style="width:100px" class="btn btn-danger btn-sm " @click="openDeleteModal(contact)">
                 <i class="fa fa-trash"></i> Delete
               </button>
             </td>

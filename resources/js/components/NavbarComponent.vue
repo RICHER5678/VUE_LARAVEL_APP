@@ -1,5 +1,5 @@
 <template>
-  <nav data-bs-theme="dark" class="navbar navbar-expand-lg p-4 bg-body-tertiary">
+  <nav data-bs-theme="dark" class="navbar navbar-expand-lg p-4 bg-body-tertiary ">
     <div class="container-fluid">
       <b><a class="navbar-brand" href="#"> SMS</a></b>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +7,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li><a class="nav-link d-flex align-items-center"   href="#"><i class="fa fa-home p-1"></i> Dashboard</a></li>
+          <li><router-link class="nav-link" to="/">Dashboard</router-link></li>
+          
+          <!-- <li><a class="nav-link d-flex align-items-center"   href="#"><i class="fa fa-home p-1"></i> Dashboard</a></li> -->
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -19,14 +21,15 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"> Contacts</a>
+            <router-link class="nav-link" to="/form">Contacts</router-link>
+            <!-- <a class="nav-link active" aria-current="page" href="#"> Contacts</a> -->
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Company Management
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><i class="fas fa-sitemap"></i> Organisations</a></li>
+              <li><router-link class="nav-link" to="/organisation"><i class="fa fa-sitemap"></i>Organisations</router-link></li>
               <li><a class="dropdown-item" href="#"><i class="fas fa-layer-group"></i> Departments</a></li>
               <li><a class="dropdown-item" href="#"><i class="fas fa-user-tag"></i> Roles</a></li>
             </ul>
