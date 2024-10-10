@@ -29,8 +29,8 @@
               Company Management
             </a>
             <ul class="dropdown-menu">
-              <li><router-link class="nav-link" to="/organisations"><i class="fa fa-sitemap p-2"></i>Organisations</router-link></li>
-              <li><router-link class="nav-link" to="/departments"><i class="fa fa-layer-group p-2"></i>Departments</router-link></li>
+              <li><router-link class="nav-link" to="/organisations"><i class="fa fa-sitemap me-1 "></i>Organisations</router-link></li>
+              <li><router-link class="nav-link" to="/departments"><i class="fa fa-layer-group me-1"></i>Departments</router-link></li>
             
               <li><a class="dropdown-item" href="#"><i class="fas fa-user-tag"></i> Roles</a></li>
             </ul>
