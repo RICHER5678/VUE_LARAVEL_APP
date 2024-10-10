@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\DepartmentController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -19,18 +20,30 @@ Route::get('/contacts', [ContactController::class, 'index']);
 Route::put('/contact/{id}', [ContactController::class, 'update']);
 //for deleting the data in the contacts table
 Route::delete('/contact/{id}', [ContactController::class, 'destroy']);
-//for handling the imports
+//for handling the imports in the contacs tables
 Route::post('/import-contacts', [ContactController::class, 'import']);
 
 
 
 
                        //AP1 ORGANISATIONS
-//for storing data in the contacts table
+//for storing data in the organisations tables
 Route::post('/organisation', [OrganisationController::class, 'store']);
-//for fetching data in the contacts table
+//for fetching data in the organisations tables
 Route::get('/organisations', [OrganisationController::class, 'index']);
-//for updating the data in the contacts table
+//for updating the data in the organisations table
 Route::put('/organisation/{id}', [OrganisationController::class, 'update']);
-//for deleting the data in the contacts table
+//for deleting the data in the organisation table
 Route::delete('/organisation/{id}', [OrganisationController::class, 'destroy']);
+
+
+
+                       //AP1 DEPARTMENTS
+//for storing data in the departments tables
+Route::post('/department', [DepartmentController::class, 'store']);
+//for fetching data in the departments tables
+Route::get('/departments', [DepartmentController::class, 'index']);
+//for updating the data in the departments tables
+Route::put('/department/{id}', [DepartmentController::class, 'update']);
+//for deleting the data in the departments tables
+Route::delete('/department/{id}', [DepartmentController::class, 'destroy']);

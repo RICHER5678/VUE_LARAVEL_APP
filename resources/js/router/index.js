@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import FormComponent from '../components/FormComponent.vue';
 import DashboardComponent from '../components/DashboardComponent.vue';
 import OrganisationComponent from '../components/OrganisationComponent.vue';
+import DepartmentComponent from '../components/DepartmentComponent.vue';
 
 
 const routes = [
@@ -13,14 +14,20 @@ const routes = [
   },
   {
     //for the contacts
-    path: '/form',
+    path: '/contacts',
     component: FormComponent,
   },
   //for the organisations
   {
-    path: '/organisation',
+    path: '/organisations',
     component: OrganisationComponent,
   },
+ //for the departments
+ {
+  path: '/departments',
+  component: DepartmentComponent,
+},
+
 ];
 
 const router = createRouter({
