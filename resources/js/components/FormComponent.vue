@@ -143,6 +143,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone Number</th>
+            <th>Created At</th>
+            <th>Updated At</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -152,15 +154,17 @@
             <td>{{ contact.name }}</td>
             <td>{{ contact.email }}</td>
             <td>{{ contact.phone }}</td>
+            <td>{{ contact.created_at }}</td>
+            <td>{{ contact.updated_at }}</td>
             <td>
               <!-- Action buttons -->
-              <button style="width:100px; margin-left:10px; margin-right: 0;" class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
+              <button  class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
                 <i class="fa fa-eye"></i> View
               </button>
-              <button style="width:100px" class="btn btn-secondary btn-sm me-2 " @click="openEditModal(contact)">
+              <button  class="btn btn-secondary btn-sm me-2 " @click="openEditModal(contact)">
                 <i class="fa fa-edit"></i> Edit
               </button>
-              <button style="width:100px" class="btn btn-danger btn-sm " @click="openDeleteModal(contact)">
+              <button class="btn btn-danger btn-sm " @click="openDeleteModal(contact)">
                 <i class="fa fa-trash"></i> Delete
               </button>
             </td>
