@@ -12,7 +12,7 @@ class OrganisationController extends Controller
      */
     public function index()
     {
-         // Fetch all contacts
+         // Fetch all organisations
          $organisation = Organisation::all();
 
          // Return the data as a JSON response

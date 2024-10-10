@@ -21,7 +21,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/form">Contacts</router-link>
+            <router-link class="nav-link" to="/contacts">Contacts</router-link>
             <!-- <a class="nav-link active" aria-current="page" href="#"> Contacts</a> -->
           </li>
           <li class="nav-item dropdown">
@@ -29,8 +29,9 @@
               Company Management
             </a>
             <ul class="dropdown-menu">
-              <li><router-link class="nav-link" to="/organisation"><i class="fa fa-sitemap"></i>Organisations</router-link></li>
-              <li><a class="dropdown-item" href="#"><i class="fas fa-layer-group"></i> Departments</a></li>
+              <li><router-link class="nav-link" to="/organisations"><i class="fa fa-sitemap p-2"></i>Organisations</router-link></li>
+              <li><router-link class="nav-link" to="/departments"><i class="fa fa-layer-group p-2"></i>Departments</router-link></li>
+            
               <li><a class="dropdown-item" href="#"><i class="fas fa-user-tag"></i> Roles</a></li>
             </ul>
           </li>
