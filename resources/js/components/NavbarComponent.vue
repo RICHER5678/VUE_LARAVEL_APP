@@ -1,7 +1,10 @@
 <template>
   <nav data-bs-theme="dark" class="navbar navbar-expand-lg p-4 bg-body-tertiary ">
     <div class="container-fluid">
-      <b><a class="navbar-brand" href="#"> SMS</a></b>
+      <b>
+        <img src="/public/fav.jpg" class="mb-1" alt="Bootstrap" width="30" height="24">
+        <a class="navbar-brand" href="#"> SMS</a></b>
+    
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

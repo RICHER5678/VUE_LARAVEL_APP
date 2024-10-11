@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <div class="container mt-4">
         <h2 class="text-left">Department</h2>
+        <!-- form for departments -->
         <form @submit.prevent="submitForm">
             <div class="row">
                 <div class="col mb-3">
@@ -57,7 +58,7 @@
             </div>
         </div>
 
-        <!-- Success Modal for organisation Update -->
+        <!-- Success Modal for department Update -->
         <div data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="showUpdateSuccessModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -75,7 +76,7 @@
             </div>
         </div>
 
-        <!-- Success Modal for Contact Delete -->
+        <!-- Success Modal for department Delete -->
         <div data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="showDeleteSuccessModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -93,7 +94,7 @@
             </div>
         </div>
 
-        <!-- Contact List -->
+        <!-- department table List -->
         <div class="container mb-4">
             <h3 class="mt-4">Departments List</h3>
             <table data-bs-theme="" class="table table-bordered mt-3">
@@ -227,7 +228,7 @@ export default {
                 name: "",
                 organisation_id: ""
             },
-            organisations: [], // Organisations data for the dropdown
+            organisations: [], // Organisations data for the dropdown inside the form
             departments: [],
             selectedDepartment: {},
             showSuccessModal: false,
@@ -251,6 +252,7 @@ export default {
         },
     },
     methods: {
+        //for handling the form submission
         async submitForm() {
             try {
                 await axios.post("/api/department", this.form);
@@ -270,7 +272,7 @@ export default {
                 }, 10000); // 10 seconds
             }
         },
-
+  //for fetching the departments from the database
         async fetchDepartments() {
             try {
                 const response = await axios.get("/api/departments");
@@ -280,6 +282,7 @@ export default {
             }
         },
 
+        //for fetching the organisations to populate the drop down
         async fetchOrganisations() {
             try {
                 const response = await axios.get("/api/organisations");
@@ -288,22 +291,23 @@ export default {
                 console.error("Error fetching organisations:", error);
             }
         },
-
+//return the number of pages(pagination)
         changePage(page) {
             if (page < 1 || page > this.totalPages) return;
             this.currentPage = page;
         },
 
+        //viewing modal
         openViewModal(department) {
             this.selectedDepartment = { ...department };
             this.viewModalOpen = true;
         },
-
+  //editing modal
         openEditModal(department) {
             this.selectedDepartment = { ...department };
             this.editModalOpen = true;
         },
-
+//updating modal
         async updateDepartment() {
             try {
                 await axios.put(`/api/department/${this.selectedDepartment.id}`, this.selectedDepartment);
@@ -324,7 +328,7 @@ export default {
             this.selectedDepartment = { ...department };
             this.deleteModalOpen = true;
         },
-
+//delete modal
         async deleteDepartment() {
             try {
                 await axios.delete(`/api/department/${this.selectedDepartment.id}`);
@@ -341,7 +345,7 @@ export default {
             }
         },
     },
-    //POPOLATE THE SELECT DROP DOWN
+    //POPuLATE THE SELECT DROP DOWN
     mounted() {
         this.fetchDepartments();
         this.fetchOrganisations();
