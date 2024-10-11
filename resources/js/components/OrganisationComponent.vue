@@ -72,7 +72,7 @@
         </div>
 
 
-        <!-- Success Modal for Contact Delete -->
+        <!-- Success Modal for organisation Delete -->
         <div data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="showDeleteSuccessModal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -97,7 +97,7 @@
 
 
 
-        <!-- Contact List -->
+        <!-- organisation table list -->
         <div class="container mb-4">
             <h3 class="mt-4">Organisation List</h3>
             <table data-bs-theme="" class="table table-bordered mt-3  ">
