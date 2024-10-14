@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\GroupController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -47,3 +48,14 @@ Route::get('/departments', [DepartmentController::class, 'index']);
 Route::put('/department/{id}', [DepartmentController::class, 'update']);
 //for deleting the data in the departments tables
 Route::delete('/department/{id}', [DepartmentController::class, 'destroy']);
+
+
+                       //AP1 GROUPS
+//for storing data in the groups tables
+Route::post('/group', [GroupController::class, 'store']);
+//for fetching data in the groups tables
+Route::get('/groups', [GroupController::class, 'index']);
+//for updating the data in the groups tables
+Route::put('/group/{id}', [GroupController::class, 'update']);
+//for deleting the data in the groups tables
+Route::delete('/group/{id}', [GroupController::class, 'destroy']);

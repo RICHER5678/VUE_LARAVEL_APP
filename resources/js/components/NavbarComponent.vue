@@ -43,7 +43,7 @@
               User Management
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><i class="fas fa-users-cog"></i> Groups</a></li>
+              <li><router-link class="nav-link" to="/groups"><i class="fa fa-users-cog me-1"></i>Groups</router-link></li>
               <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Users</a></li>
             </ul>
           </li>

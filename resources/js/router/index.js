@@ -4,6 +4,7 @@ import FormComponent from '../components/FormComponent.vue';
 import DashboardComponent from '../components/DashboardComponent.vue';
 import OrganisationComponent from '../components/OrganisationComponent.vue';
 import DepartmentComponent from '../components/DepartmentComponent.vue';
+import GroupComponent from '../components/GroupComponent.vue';
 
 
 const routes = [
@@ -26,6 +27,11 @@ const routes = [
  {
   path: '/departments',
   component: DepartmentComponent,
+},
+ //for the groups
+ {
+  path: '/groups',
+  component: GroupComponent,
 },
 
 ];
