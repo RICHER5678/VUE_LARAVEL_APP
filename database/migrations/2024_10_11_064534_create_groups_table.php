@@ -14,12 +14,7 @@ return new class extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->bigIncrements('id')->comment('Primary key: Unique ID of the groups table and is of datatype bigint.');
             $table->string('name', 255)->comment('The name of the group. It is of datatype varchar with a maximum length of 255 characters.');
-            $table->foreignId('organisation_id')
-                  ->constrained('organisations')
-                  ->nullable()
-                  ->cascadeOnDelete()
-                  ->comment('Foreign key: References the ID of the organisation in the organisations table.');
-            $table->foreignId('department_id')
+                  $table->foreignId('department_id')
                   ->nullable()
                   ->constrained('departments')
                   ->cascadeOnDelete()

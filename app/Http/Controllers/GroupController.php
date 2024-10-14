@@ -28,7 +28,7 @@ class GroupController extends Controller
            // Validate the form data
            $validatedData = $request->validate([
             'name' => 'required',
-            'organisation_id' => 'required',
+            // 'organisation_id' => 'required',
             'department_id' => 'required'
       
         ]);
