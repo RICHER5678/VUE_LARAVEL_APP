@@ -5,6 +5,7 @@ import DashboardComponent from '../components/DashboardComponent.vue';
 import OrganisationComponent from '../components/OrganisationComponent.vue';
 import DepartmentComponent from '../components/DepartmentComponent.vue';
 import GroupComponent from '../components/GroupComponent.vue';
+import TemplateComponent from '../components/TemplateComponent.vue';
 
 
 const routes = [
@@ -32,6 +33,12 @@ const routes = [
  {
   path: '/groups',
   component: GroupComponent,
+},
+
+ //for the templates
+ {
+  path: '/templates',
+  component: TemplateComponent,
 },
 
 ];
