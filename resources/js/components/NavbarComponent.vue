@@ -21,6 +21,7 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#"><i class="fas fa-sms"></i> Quick SMS</a></li>
               <li><a class="dropdown-item" href="#"><i class="fas fa-file-alt"></i> Templates</a></li>
+              <li><router-link class="nav-link" to="/templates"><i class="fa fa-file-alt me-1"></i>Templates</router-link></li>
             </ul>
           </li>
           <li class="nav-item">

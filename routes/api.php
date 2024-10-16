@@ -6,6 +6,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\TemplateController;
+use App\Http\Controllers\UserController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -59,3 +61,28 @@ Route::get('/groups', [GroupController::class, 'index']);
 Route::put('/group/{id}', [GroupController::class, 'update']);
 //for deleting the data in the groups tables
 Route::delete('/group/{id}', [GroupController::class, 'destroy']);
+
+
+
+
+                       //AP1 TEMPLATES
+//for storing data in the templates tables
+Route::post('/template', [TemplateController::class, 'store']);
+//for fetching data in the template tables
+Route::get('/templates', [TemplateController::class, 'index']);
+//for updating the data in the templates tables
+Route::put('/template/{id}', [TemplateController::class, 'update']);
+//for deleting the data in the templates tables
+Route::delete('/template/{id}', [TemplateController::class, 'destroy']);
+
+
+                       //AP1 USERS
+//for storing data in the users table
+Route::post('/user', [UserController::class, 'store']);
+//for fetching data in the user table
+Route::get('/users', [UserController::class, 'index']);
+//for updating the data in the user tables
+Route::put('/user/{id}', [UserController::class, 'update']);
+//for deleting the data in the user tables
+Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
