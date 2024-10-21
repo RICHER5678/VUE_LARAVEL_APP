@@ -1,106 +1,451 @@
+
 <template>
-  <nav data-bs-theme="dark" class="navbar navbar-expand-lg p-4 bg-body-tertiary ">
-    <div class="container-fluid">
-      <b>
-        <img src="/public/fav.jpg" class="mb-1" alt="Bootstrap" width="30" height="24">
-        <a class="navbar-brand" href="#"> SMS</a></b>
+ <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <div class="wrapper">
+        <aside id="sidebar"   :class="{ expand: isExpanded }">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button" @click="toggleSidebar">
+                    <i class="lni lni-grid-alt"></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a style="text-decoration: none;" href="#">SMS</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+              <!-- dashboard -->
+              <li class="sidebar-item">
+        <router-link class="sidebar-link" to="/">
+          <i class="lni lni-home"></i>
+          <span>Dashboard</span>
+        </router-link>
+      </li>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li><router-link class="nav-link" to="/">Dashboard</router-link></li>
+      <!-- user management -->
+                <li class="sidebar-item">
+    <!-- The main dropdown link -->
+    <router-link
+      to="#"
+      class="sidebar-link collapsed has-dropdown"
+      data-bs-toggle="collapse"
+      data-bs-target="#auth"
+      aria-expanded="false"
+      aria-controls="auth"
+    >
+    <i class="lni lni-envelope"></i>
+      <span>Message Management</span>
+    </router-link>
 
-          <!-- <li><a class="nav-link d-flex align-items-center"   href="#"><i class="fa fa-home p-1"></i> Dashboard</a></li> -->
+    <!-- The dropdown list with Vue Router links -->
+    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+      <li class="sidebar-item">
+        <!-- Using router-link for Vue routing -->
+        <router-link to="/sms" class="sidebar-link">Quick SMS</router-link>
+      </li>
+      <li class="sidebar-item">
+        <router-link to="/templates" class="sidebar-link">Templates</router-link>
+      </li>
+    </ul>
+  </li>
+  
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Message Management
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><i class="fas fa-sms"></i> Quick SMS</a></li>
-              <li><router-link class="nav-link" to="/templates"><i
-                    class="fa fa-file-alt me-1"></i>Templates</router-link></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/contacts">Contacts</router-link>
-            <!-- <a class="nav-link active" aria-current="page" href="#"> Contacts</a> -->
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Company Management
-            </a>
-            <ul class="dropdown-menu">
-              <li><router-link class="nav-link" to="/organisations"><i
-                    class="fa fa-sitemap me-1 "></i>Organisations</router-link></li>
-              <li><router-link class="nav-link" to="/departments"><i
-                    class="fa fa-layer-group me-1"></i>Departments</router-link></li>
+  <!-- contacts -->
+  <li class="sidebar-item">
+        <router-link class="sidebar-link" to="/contacts">
+          <i class="lni lni-user"></i>
+          <span>Contacts</span>
+        </router-link>
+      </li>
 
-              <li><a class="dropdown-item" href="#"><i class="fas fa-user-tag"></i> Roles</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              User Management
-            </a>
-            <ul class="dropdown-menu">
-              <li><router-link class="nav-link" to="/groups"><i class="fa fa-users-cog me-1"></i>Groups</router-link>
-              </li>
-              <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Users</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Jobs
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><i class="fas fa-briefcase"></i> Contact Jobs</a></li>
-              <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Message Jobs</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Reports
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><i class="fas fa-briefcase"></i> Contact Reports</a></li>
-              <li><a class="dropdown-item" href="#"><i class="fas fa-envelope"></i> Message Reports</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Settings
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#"><i class="fas fa-id-badge"></i> Sender ID</a></li>
-              <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog"></i> My Profile</a></li>
-            </ul>
-          </li>
-        </ul>
 
-        <!-- account button -->
-        <div style="margin-right: auto;" class="btn-group ">
-          <button type="button" class="btn btn-success"><i class="fa fa-user p-2"></i>Account</button>
-          <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <span class="visually-hidden">Toggle Dropdown</span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">My Profile</a></li>
-            <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li> <a class="dropdown-item" href="#"> Logout<i class="fa fa-power-off p-2" aria-hidden="true"></i></a>
-            </li>
-          </ul>
-        </div>
 
-      </div>
+         <!-- company management -->
+         <li class="sidebar-item">
+    <!-- The main dropdown link -->
+    <router-link
+      to="#"
+      class="sidebar-link collapsed has-dropdown"
+      data-bs-toggle="collapse"
+      data-bs-target="#auth1"
+      aria-expanded="false"
+      aria-controls="auth1"
+    >
+    <i class="lni lni-rocket"></i>
+      <span>Company Management</span>
+    </router-link>
+
+    <!-- The dropdown list with Vue Router links -->
+    <ul id="auth1" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar1">
+      <li class="sidebar-item">
+        <!-- Using router-link for Vue routing -->
+        <router-link to="/organisations" class="sidebar-link">Organisations</router-link>
+      </li>
+      <li class="sidebar-item">
+        <router-link to="/departments" class="sidebar-link">Departments</router-link>
+      </li>
+      <li class="sidebar-item">
+        <router-link to="/roles" class="sidebar-link">Roles</router-link>
+      </li>
+    </ul>
+  </li>
+
+
+
+     <!-- user management -->
+     <li class="sidebar-item">
+    <!-- The main dropdown link -->
+    <router-link
+      to="#"
+      class="sidebar-link collapsed has-dropdown"
+      data-bs-toggle="collapse"
+      data-bs-target="#auth2"
+      aria-expanded="false"
+      aria-controls="auth2"
+    >
+      <i class="lni lni-users"></i>
+      <span>User Management</span>
+    </router-link>
+
+    <!-- The dropdown list with Vue Router links -->
+    <ul id="auth2" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar2">
+      <li class="sidebar-item">
+        <!-- Using router-link for Vue routing -->
+        <router-link to="/groups" class="sidebar-link">Groups</router-link>
+      </li>
+      <li class="sidebar-item">
+        <router-link to="/users" class="sidebar-link">Users</router-link>
+      </li>
+    </ul>
+  </li>
+
+
+
+
+     <!-- JOB management -->
+     <li class="sidebar-item">
+    <!-- The main dropdown link -->
+    <router-link
+      to="#"
+      class="sidebar-link collapsed has-dropdown"
+      data-bs-toggle="collapse"
+      data-bs-target="#auth3"
+      aria-expanded="false"
+      aria-controls="auth3"
+    >
+    <i class="lni lni-briefcase"></i>
+      <span>Job Management</span>
+    </router-link>
+
+    <!-- The dropdown list with Vue Router links -->
+    <ul id="auth3" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar3">
+      <li class="sidebar-item">
+        <!-- Using router-link for Vue routing -->
+        <router-link to="/contact_jobs" class="sidebar-link">Contact Jobs</router-link>
+      </li>
+      <li class="sidebar-item">
+        <router-link to="/message_jobs" class="sidebar-link">Message Jobs</router-link>
+      </li>
+    </ul>
+  </li>
+
+
+
+     <!-- Reports management -->
+     <li class="sidebar-item">
+    <!-- The main dropdown link -->
+    <router-link
+      to="#"
+      class="sidebar-link collapsed has-dropdown"
+      data-bs-toggle="collapse"
+      data-bs-target="#auth4"
+      aria-expanded="false"
+      aria-controls="auth4"
+    >
+    <i class="lni lni-bar-chart"></i>
+      <span>Reports Management</span>
+    </router-link>
+
+    <!-- The dropdown list with Vue Router links -->
+    <ul id="auth4" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar4">
+      <li class="sidebar-item">
+        <!-- Using router-link for Vue routing -->
+        <router-link to="/sms" class="sidebar-link">Message Reports</router-link>
+      </li>
+      <li class="sidebar-item">
+        <router-link to="/templates" class="sidebar-link">Contact Reports</router-link>
+      </li>
+    </ul>
+  </li>
+
+
+
+
+     <!-- user management -->
+     <li class="sidebar-item">
+    <!-- The main dropdown link -->
+    <router-link
+      to="#"
+      class="sidebar-link collapsed has-dropdown"
+      data-bs-toggle="collapse"
+      data-bs-target="#auth5"
+      aria-expanded="false"
+      aria-controls="auth5"
+    >
+      <i class="lni lni-cog"></i>
+      <span>Settings</span>
+    </router-link>
+
+    <!-- The dropdown list with Vue Router links -->
+    <ul id="auth5" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar5">
+      <li class="sidebar-item">
+        <!-- Using router-link for Vue routing -->
+        <router-link to="/" class="sidebar-link">Sender ID</router-link>
+      </li>
+      <li class="sidebar-item">
+        <router-link to="/" class="sidebar-link">My Profile</router-link>
+      </li>
+    </ul>
+  </li>
+<!-- MULTI DROPDOWN -->
+<!--   
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
+                        <i class="lni lni-layout"></i>
+                        <span>Multi Level</span>
+                    </a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
+                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
+                                Two Links
+                            </a>
+                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 1</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Link 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li> -->
+             
+            </ul>
+            <div class="sidebar-footer">
+                <a href="#" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+      
     </div>
-  </nav>
+ 
+
+
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isExpanded: false, // Tracks whether the sidebar is expanded or not
+    };
+  },
+  methods: {
+    toggleSidebar() {
+      this.isExpanded = !this.isExpanded; // Toggle sidebar expansion
+    },
+  },
+};
+</script>
+
+
+<style >
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.sidebar-link{
+  text-decoration: none;
+}
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+    margin-top:10px;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color: #fafbfe;
+}
+
+#sidebar {
+    width: 70px;
+    min-width: 70px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color: #0e2238;
+    display: flex;
+    flex-direction: column;
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo a {
+    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #3b7ddd;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -105,8 +105,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                        <th>Created</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -115,7 +114,7 @@
                         <td>{{ organisation.id }}</td>
                         <td @click="openViewModal(organisation)">{{ organisation.name }}</td>
                         <td>{{ organisation.created_at }}</td>
-                        <td>{{ organisation.created_at }}</td>
+                       
                         <td>
                             <!-- Action buttons -->
                             <button style="width:100px; margin-left:10px; margin-right: 0;"

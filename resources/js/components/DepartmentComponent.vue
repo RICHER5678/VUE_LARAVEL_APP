@@ -103,8 +103,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Organisation</th>
-                        <th>Created At</th>
-                        <th>Updated At</th>
+                      
                         <th>Actions</th>
                        
                     </tr>
@@ -114,8 +113,7 @@
                         <td>{{ department.id }}</td>
                         <td>{{ department.name }}</td>
                         <td>{{ department.organisation.name }}</td>
-                        <td>{{ department.created_at }}</td>
-                        <td>{{ department.updated_at }}</td>
+                    
                         <td>
                             <button 
                                 class="btn btn-success btn-sm me-2" @click="openViewModal(department)">
