@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <navbar-component /> <!-- Render navbar here -->
-    <router-view /> <!-- Render routed components here -->
+  <div class="main-layout">
+    <navbar-component /> <!-- Sidebar on the left -->
+    <div class="content">
+      <router-view /> <!-- Routed components will appear here -->
+    </div>
   </div>
 </template>
 
@@ -17,6 +19,25 @@ export default {
 };
 </script>
 
-<style>
-/* Add any global styles you may need */
+<style >
+/* Flexbox layout to position sidebar on the left and content on the right */
+.main-layout {
+  display: flex;
+  height: 100vh; /* Full viewport height */
+  
+}
+
+/* Sidebar (navbar) styling */
+navbar-component {
+  width: 250px; /* Adjust the width of the sidebar */
+  flex-shrink: 0; /* Prevent the sidebar from shrinking */
+  background-color: #f8f9fa; /* Background color for the sidebar */
+}
+
+/* Main content area styling */
+.content {
+  flex-grow:1; /* Take up remaining space on the right */
+  padding: 20px; /* Add padding inside the content area */
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+}
 </style>

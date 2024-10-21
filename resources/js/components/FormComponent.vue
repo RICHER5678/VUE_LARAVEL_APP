@@ -143,8 +143,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone Number</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+        
             <th>Actions</th>
           </tr>
         </thead>
@@ -154,8 +153,7 @@
             <td>{{ contact.name }}</td>
             <td>{{ contact.email }}</td>
             <td>{{ contact.phone }}</td>
-            <td>{{ contact.created_at }}</td>
-            <td>{{ contact.updated_at }}</td>
+          
             <td>
               <!-- Action buttons -->
               <button  class="btn btn-success btn-sm me-2" @click="openViewModal(contact)">
