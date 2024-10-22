@@ -299,7 +299,7 @@ export default {
             this.currentPage = page;
         },
         openViewModal(user) {
-            this.selectedUSer = { ...user };
+            this.selectedUser = { ...user };
             this.viewModalOpen = true;
         },
         openEditModal(user) {

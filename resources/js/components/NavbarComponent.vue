@@ -4,13 +4,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <div class="wrapper">
-        <aside id="sidebar"   :class="{ expand: isExpanded }">
+        <aside id="sidebar"   :class="{ expand: isExpanded} ">
             <div class="d-flex">
                 <button class="toggle-btn" type="button" @click="toggleSidebar">
                     <i class="lni lni-grid-alt"></i>
                 </button>
                 <div class="sidebar-logo">
-                    <a style="text-decoration: none;" href="#">SMS</a>
+                    <a style="text-decoration: none;" href="">SMS</a>
                 </div>
             </div>
             <ul class="sidebar-nav">
@@ -259,6 +259,7 @@ export default {
     toggleSidebar() {
       this.isExpanded = !this.isExpanded; // Toggle sidebar expansion
     },
+
   },
 };
 </script>
@@ -316,12 +317,20 @@ body {
     flex-direction: column;
     overflow-y:auto;
     overflow-x: hidden;
-}
+    scrollbar-width:thin;
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+ 
 
+}
+.sidebar-dropdown .sidebar-link{
+margin-left: 30px;
+}
 #sidebar.expand {
     width: 260px;
     min-width: 260px;
 }
+
 
 .toggle-btn {
     background-color: transparent;
