@@ -6,6 +6,7 @@ import OrganisationComponent from '../components/OrganisationComponent.vue';
 import DepartmentComponent from '../components/DepartmentComponent.vue';
 import GroupComponent from '../components/GroupComponent.vue';
 import TemplateComponent from '../components/TemplateComponent.vue';
+import UserComponent from '../components/UserComponent.vue';
 
 
 const routes = [
@@ -40,6 +41,11 @@ const routes = [
   path: '/templates',
   component: TemplateComponent,
 },
+//for users
+{
+  path: '/users',
+  component: UserComponent,
+}
 
 ];
 
