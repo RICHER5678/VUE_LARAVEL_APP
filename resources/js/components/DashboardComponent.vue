@@ -1,34 +1,80 @@
 <template>
-<nav class="navbar ">
-  <div class="container-fluid">
-    <a class="navbar-brand">Dashboard</a>
-  
-<!-- Example split danger button -->
-<div class="btn-group" >
-  <button type="button" class="btn btn-success">My Account</button>
-  <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="visually-hidden">Toggle Dropdown</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Your Profile</a></li>
-    <li><a class="dropdown-item" href="#">Logout</a></li>
-   
-  </ul>
-</div>
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand">Dashboard</a>
 
-  </div>
-</nav>
+            <!-- Example split danger button -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-success">
+                    My Account
+                </button>
+                <button
+                    type="button"
+                    class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    <span class="visually-hidden">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Your Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <!-- f -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <div style="height: auto" class="card">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">OUTBOUNT SMS</h6>
+                        <p style="font-size: 30px" class="text-center">
+                            <strong>60</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-4 col-sm-4">
+                <div style="height: auto; width: auto" class="card">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">INBOUND SMS</h6>
+                        <p style="font-size: 30px" class="text-center">
+                            <strong>16</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-4 col-sm-4">
+                <div style="height: auto" class="card">
+                    <div class="card-body">
+                        <h6 class="card-title text-center">CONTACTS</h6>
+                        <p style="font-size: 30px" class="text-center">
+                            <strong>10,000</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- for the graphs -->
     <div class="container mt-5">
         <div class="row">
             <!-- Donut Chart -->
             <div class="col-md-4 col-sm-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center ">Overview</h5>
-                        <canvas style="height:250px; padding:5px;"id="donutChart"></canvas>
+                        <h5 class="card-title text-center">Overview</h5>
+                        <canvas
+                            style="height: 250px; padding: 5px"
+                            id="donutChart"
+                        ></canvas>
                     </div>
                 </div>
             </div>
@@ -38,7 +84,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">Message Reports</h5>
-                        <canvas style="height:250px; padding:5px" id="lineChart"></canvas>
+                        <canvas
+                            style="height: 250px; padding: 5px"
+                            id="lineChart"
+                        ></canvas>
                     </div>
                 </div>
             </div>
@@ -48,7 +97,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">Contact Reports</h5>
-                        <canvas style="height:250px; padding: 5px;" id="barChart"></canvas>
+                        <canvas
+                            style="height: 250px; padding: 5px"
+                            id="barChart"
+                        ></canvas>
                     </div>
                 </div>
             </div>
@@ -70,11 +122,7 @@ export default {
         new Chart(donutCtx, {
             type: "doughnut",
             data: {
-                labels: [
-                    "Organisations",
-                    "Departments",
-                    "Groups",
-                ],
+                labels: ["Organisations", "Departments", "Groups"],
                 datasets: [
                     {
                         label: "Your Overall overview",
@@ -102,7 +150,6 @@ export default {
             options: {
                 responsive: true,
                 maintainAspectRatio: true,
-                
             },
         });
 
@@ -195,7 +242,6 @@ export default {
 canvas {
     max-width: 100%;
     height: auto;
-    
 }
 
 .row {
