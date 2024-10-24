@@ -14,8 +14,10 @@
     "dependencies": {
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.3",
-        "bootstrap-vue": "^2.23.1",
+        "bootstrap-vue": "^1.5.1",
+        "chart.js": "^2.7.3",
         "vue": "^3.5.12",
+        "vue-chartjs": "^3.1.1",
         "vue-router": "^4.0.13"
     }
 }

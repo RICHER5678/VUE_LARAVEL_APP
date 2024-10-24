@@ -8,6 +8,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MessageController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -85,4 +86,16 @@ Route::get('/users', [UserController::class, 'index']);
 Route::put('/user/{id}', [UserController::class, 'update']);
 //for deleting the data in the user tables
 Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
+
+
+                     //AP1 MESSAGES
+//for storing data in the users table
+Route::post('/message', [MessageController::class, 'store']);
+//for fetching data in the mesages table
+Route::get('/messages', [MessageController::class, 'index']);
+//for updating the data in the messages tables
+Route::put('/message/{id}', [MessageController::class, 'update']);
+//for deleting the data in the messages tables
+Route::delete('/message/{id}', [MessageController::class, 'destroy']);
 
