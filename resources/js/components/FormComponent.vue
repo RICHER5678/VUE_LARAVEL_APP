@@ -2,21 +2,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <div   class="container mt-4">
     <h2 class="text-left">Create Contact</h2>
+
     <form @submit.prevent="submitForm">
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" v-model="form.name" required />
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" v-model="form.email" required />
-      </div>
-      <div class="mb-3">
-        <label for="phone" class="form-label">Phone Number</label>
-        <input type="number" class="form-control" id="phone" v-model="form.phone" required />
-      </div>
-      <button type="submit" class="btn btn-success">Create&nbsp;<i class="fa fa-plus-circle"></i></button>
-    </form>
+          <div class="row">
+            <div class="col mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" v-model="form.name" required />
+            </div>
+            <div class=" col mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" v-model="form.email" />
+            </div>
+            <div class=" col mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="number" class="form-control" id="phone" v-model="form.phone" />
+            </div>
+          </div>
+            <button type="submit" class="btn btn-success">Create&nbsp;<i class="fa fa-plus-circle"></i></button>
+        </form>
+
+
 
     <!-- Success Modal for Form Submission -->
     <div  data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="showSuccessModal">
@@ -122,7 +127,7 @@
             <form @submit.prevent="submitImport">
               <div class="mb-3">
                 <i class="fa fa-file-excel p-2" aria-hidden="true"></i>
-                <label for="file" class="form-label">Select Excel or CSV File</label>
+                <label for="file" class="form-label">Select an Excel or CSV File</label>
                 <input type="file" class="form-control" id="file" @change="handleFileUpload" accept=".xlsx,.csv" required />
               </div>
               <button type="submit" class="btn btn-success">Import<i class="fa fa-arrow-circle-right p-2" aria-hidden="true"></i></button>

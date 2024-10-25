@@ -33,4 +33,11 @@ composer require maatwebsite/excel)<br>
 ==>contact reports<br>
 ==>export reports<br>
 ==>Role based access!!!!(organisation admin, department admin, reseller, client, admin)
+<br>
+
+
+TO START THE SMS PROJECT; USE THIS<br>
+==>php artisan serve<br>
+==>npm run dev<br>
+==>php artisan sms<br>
 
