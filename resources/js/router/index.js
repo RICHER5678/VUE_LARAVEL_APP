@@ -7,6 +7,7 @@ import DepartmentComponent from '../components/DepartmentComponent.vue';
 import GroupComponent from '../components/GroupComponent.vue';
 import TemplateComponent from '../components/TemplateComponent.vue';
 import UserComponent from '../components/UserComponent.vue';
+import MessageComponent from '../components/MessageComponent.vue';
 
 
 const routes = [
@@ -45,6 +46,11 @@ const routes = [
 {
   path: '/users',
   component: UserComponent,
+},
+//for the messages
+{
+path: '/sms',
+component: MessageComponent,
 }
 
 ];
