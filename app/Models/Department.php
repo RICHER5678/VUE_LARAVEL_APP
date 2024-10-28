@@ -39,4 +39,6 @@ class Department extends Model
     {
         return $this->hasMany(Template::class);
     }
+
+ 
 }
