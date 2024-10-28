@@ -1,7 +1,7 @@
 <template>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <div class="container mt-4">
-        <p style="margin-top:80px;">Create>Message</p>
+        <p style="margin-top:50px;">Create>Message</p>
         <h2 class="text-left">Send a Message</h2>
         <!-- form for departments -->
         <form @submit.prevent="submitForm">
@@ -39,6 +39,64 @@
                     </div>
                 </div>
             </div>
+
+<!-- for scheduling -->
+       <!-- Toggle Switch -->
+       <div class="form-check form-switch mb-4">
+            <input style="width:35px; height:20px;"
+                class="form-check-input"
+                type="checkbox"
+                id="scheduleToggle"
+                v-model="isScheduled"
+                @change="toggleScheduleModal"
+                required
+            />
+            <label class="form-check-label" for="scheduleToggle">Schedule a Date & Time</label>
+        </div>
+
+        <!-- Schedule Modal -->
+        <div
+            class="modal fade"
+            tabindex="-1"
+            ref="scheduleModal"
+            :class="{ show: showScheduleModal }"
+            :style="{ display: showScheduleModal ? 'block' : 'none' }"
+            role="dialog"
+            aria-labelledby="scheduleModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scheduleModalLabel">Set a Schedule</h5>
+                        <button type="button" class="btn-close" aria-label="Close" @click="closeModal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="datetime" class="form-label">Choose Date & Time:</label>
+                        <input
+                            type="datetime-local"
+                            id="datetime"
+                            v-model="selectedDateTime"
+                            class="form-control"
+                            required
+                        />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @click="closeModal">Cancel</button>
+                        <button type="button" class="btn btn-primary" @click="saveSchedule">Save Schedule</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backdrop for Modal -->
+        <div class="modal-backdrop fade" :class="{ show: showScheduleModal }" v-if="showScheduleModal"></div>
+ <!-- for sheduling -->
+
+
+
+
+
             <button type="submit" class="btn btn-success">Send&nbsp;<i class="fa fa-check"></i></button>
         </form>
 
@@ -102,6 +160,9 @@ export default {
             selectedDepartment: {},
             showSuccessModal: false,
             showFailModal: false,
+            isScheduled: false,        // Tracks the toggle switch state
+            showScheduleModal: false,  // Tracks modal visibility
+            selectedDateTime: ''       // Stores selected date-time
 
         };
     },
@@ -146,6 +207,29 @@ export default {
             }
         },
 
+
+        //for sheduling
+        toggleScheduleModal() {
+            // Open the modal if toggle is on; close otherwise
+            if (this.isScheduled) {
+                this.showScheduleModal = true;
+                document.body.classList.add("modal-open"); // Prevents scrolling behind modal
+            } else {
+                this.closeModal();
+            }
+        },
+        closeModal() {
+            this.showScheduleModal = false;
+            this.isScheduled = false; // Reset toggle when closing modal
+            document.body.classList.remove("modal-open");
+        },
+        saveSchedule() {
+            // Handle saving the schedule (e.g., send to server, display confirmation)
+            console.log("Scheduled Date & Time:", this.selectedDateTime);
+            this.closeModal();
+        }
+        //for sheduling 
+
     },
     //POPuLATE THE SELECT DROP DOWN
     mounted() {
@@ -160,5 +244,22 @@ export default {
 .modal {
     display: block;
     /* Ensure modals are displayed */
+}
+
+/* Style modal as per Bootstrap standards */
+.modal.fade {
+    display: none;
+}
+.modal-backdrop.fade.show {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1040;
+}
+.modal-open .modal {
+    overflow-y: auto;
 }
 </style>
