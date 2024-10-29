@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col mb-3">
                     <label for="name" class="form-label">Sender ID</label>
-                    <input type="number" class="form-control" id="sender_id" v-model="form.sender_id" required />
+                    <input type="text" class="form-control" id="sender_id" v-model="form.sender_id" required />
                 </div>
                 <div class=" col mb-3">
                     <label for="department_id" class="form-label">Department</label>
@@ -49,7 +49,7 @@
                 id="scheduleToggle"
                 v-model="isScheduled"
                 @change="toggleScheduleModal"
-                required
+              
             />
             <label class="form-check-label" for="scheduleToggle">Schedule a Date & Time</label>
         </div>
@@ -65,7 +65,7 @@
             aria-labelledby="scheduleModalLabel"
             aria-hidden="true"
         >
-            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="scheduleModalLabel">Set a Schedule</h5>
@@ -118,6 +118,24 @@
             </div>
         </div>
 
+             <!-- date time select Modal for Form Submission -->
+             <div   class="modal align-items-left text-light" tabindex="-1" v-if="selectDateTimeModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Date and Time not selected!!!!</h5>
+                        <button type="button" class="btn-close" @click="selectDateTimeModal = false"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please select date and time.&#128531;</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @click="selectDateTimeModal = false">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Fail Modal for Form Submission -->
         <div data-bs-theme="dark" class="modal text-light" tabindex="-1" v-if="showFailModal">
             <div class="modal-dialog">
@@ -159,6 +177,7 @@ export default {
             departments: [],
             selectedDepartment: {},
             showSuccessModal: false,
+            selectDateTimeModal: false,
             showFailModal: false,
             isScheduled: false,        // Tracks the toggle switch state
             showScheduleModal: false,  // Tracks modal visibility
@@ -224,10 +243,17 @@ export default {
             document.body.classList.remove("modal-open");
         },
         saveSchedule() {
-            // Handle saving the schedule (e.g., send to server, display confirmation)
-            console.log("Scheduled Date & Time:", this.selectedDateTime);
+         
+            if(this.selectedDateTime == ''){
+                this.selectDateTimeModal = true;
+                // alert('please select time and date!!!')
+            }else{
+   // Handle saving the schedule (e.g., send to server, display confirmation)
+   console.log("Scheduled Date & Time:", this.selectedDateTime);
             this.closeModal();
-        }
+            } 
+        },
+      
         //for sheduling 
 
     },
