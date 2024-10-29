@@ -26,7 +26,7 @@ packages to be installed before the start of the project<br>
 composer require maatwebsite/excel)<br>
 ==>create templates<br>
 ==>create users<br>
-==>create messages<br>
+==>send messages<br>
 ==>dashboard with charts and graphs showing real time data <br>
 ==>sidebar(responsive)
 ==>message reports<br>
