@@ -34,6 +34,12 @@ class Department extends Model
         return $this->hasMany(Group::class);
     }
 
+    //a department has many messages
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     //One department has many templates
     public function templates()
     {

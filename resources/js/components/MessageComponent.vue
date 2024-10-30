@@ -78,7 +78,7 @@
                             id="datetime"
                             v-model="selectedDateTime"
                             class="form-control"
-                            required
+                            
                         />
                     </div>
                     <div class="modal-footer">
