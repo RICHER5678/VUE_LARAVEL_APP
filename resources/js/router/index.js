@@ -8,6 +8,7 @@ import GroupComponent from '../components/GroupComponent.vue';
 import TemplateComponent from '../components/TemplateComponent.vue';
 import UserComponent from '../components/UserComponent.vue';
 import MessageComponent from '../components/MessageComponent.vue';
+import MessageReports from '../components/MessageReports.vue';
 
 
 const routes = [
@@ -51,6 +52,11 @@ const routes = [
 {
 path: '/sms',
 component: MessageComponent,
+},
+//for message reports
+{
+  path: '/message_reports',
+  component: MessageReports,
 }
 
 ];

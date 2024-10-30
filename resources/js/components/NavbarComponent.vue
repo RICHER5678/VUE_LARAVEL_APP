@@ -170,7 +170,7 @@
     <ul id="auth4" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar4">
       <li class="sidebar-item">
         <!-- Using router-link for Vue routing -->
-        <router-link to="/sms" class="sidebar-link">Message Reports</router-link>
+        <router-link to="/message_reports" class="sidebar-link">Message Reports</router-link>
       </li>
       <li class="sidebar-item">
         <router-link to="/templates" class="sidebar-link">Contact Reports</router-link>
