@@ -50,7 +50,7 @@ const routes = [
 },
 //for the messages
 {
-path: '/sms',
+path: '/sms/create_sms',
 component: MessageComponent,
 },
 //for message reports

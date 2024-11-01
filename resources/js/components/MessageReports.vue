@@ -4,6 +4,11 @@
         <h2 class="text-center">Message Reports</h2>
 
 
+        <!-- simple alert -->
+        <!-- <div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+</div> -->
+
 
         <!-- department table List -->
         <div class="container mb-4">

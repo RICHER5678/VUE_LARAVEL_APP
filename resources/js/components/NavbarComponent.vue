@@ -41,7 +41,7 @@
     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
       <li class="sidebar-item">
         <!-- Using router-link for Vue routing -->
-        <router-link to="/sms" class="sidebar-link">Quick SMS</router-link>
+        <router-link to="/sms/create_sms" class="sidebar-link">Quick SMS</router-link>
       </li>
       <li class="sidebar-item">
         <router-link to="/templates" class="sidebar-link">Templates</router-link>
@@ -172,9 +172,9 @@
         <!-- Using router-link for Vue routing -->
         <router-link to="/message_reports" class="sidebar-link">Message Reports</router-link>
       </li>
-      <li class="sidebar-item">
+      <!-- <li class="sidebar-item">
         <router-link to="/templates" class="sidebar-link">Contact Reports</router-link>
-      </li>
+      </li> -->
     </ul>
   </li>
 
